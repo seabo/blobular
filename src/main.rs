@@ -42,9 +42,6 @@ enum Commands {
     },
 
     /// Print a file from the store.
-    /// This prints the contents of the file. The blob hash that gets passed is expected to be
-    /// in the format of a parent blob, i.e. it is expected to be a blob that contains the hashes
-    /// of the chunks that make up the file. If not, this will fail.
     #[command(arg_required_else_help = true)]
     #[command(name = "cat-file")]
     CatFile {

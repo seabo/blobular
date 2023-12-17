@@ -15,7 +15,7 @@ Commands:
   init      Initialize a new blobular store in the current directory
   add       Add a blob to the store
   cat-blob  Print a blob from the store
-  cat-file  Print a file from the store. This prints the contents of the file. The blob hash that gets passed is expected to be in the format of a parent blob, i.e. it is expected to be a blob that contains the hashes of the chunks that make up the file. If not, this will fail
+  cat-file  Print a file from the store.
   help      Print this message or the help of the given subcommand(s)
 
 Options:
