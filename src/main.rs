@@ -145,11 +145,6 @@ fn add_file_to_blobular_repo(path: PathBuf) {
         .collect::<Vec<_>>();
     let chunks = chunk_file(&file_bytes);
 
-    // Compute the hash of the whole file.
-    // NOTE: should build up the hash as we iterate the chunks of the file rather than
-    // iterating through the same file multiple times.
-    let blob_hash = hash_file(&path).unwrap();
-
     // Maintain a list of chunk hashes so we can write out the parent blob at the end.
     let mut chunk_hashes = Vec::new();
 
@@ -178,6 +173,12 @@ fn add_file_to_blobular_repo(path: PathBuf) {
         parent_blob.extend_from_slice(chunk_hash.as_bytes());
         parent_blob.push(b'\n');
     }
+
+    // Compute the content-address of the parent blob
+    let mut hasher = Sha1::new();
+    hasher.update(&parent_blob);
+    let hash = hasher.finalize();
+    let blob_hash = format!("{:x}", hash);
 
     // Store the parent blob.
     store_blob(&dot_blobular, &parent_blob, &blob_hash);
