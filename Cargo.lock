@@ -61,6 +61,7 @@ name = "blobular"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "fastcdc",
  "flate2",
  "sha1",
 ]
@@ -172,6 +173,12 @@ dependencies = [
  "block-buffer",
  "crypto-common",
 ]
+
+[[package]]
+name = "fastcdc"
+version = "3.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a71061d097bfa9a5a4d2efdec57990d9a88745020b365191d37e48541a1628f2"
 
 [[package]]
 name = "flate2"
